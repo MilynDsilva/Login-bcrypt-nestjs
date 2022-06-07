@@ -1,8 +1,9 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { LogintDto } from './dto/login-dto';
 import { LoginService } from './login.service';
 
+@ApiTags('Login')
 @Controller('login')
 export class LoginController {
     constructor(private readonly loginService: LoginService) {}
