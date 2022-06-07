@@ -10,6 +10,7 @@ export class LoginController {
 
 @ApiResponse({ status: 200, description: 'Ok.'})
 @ApiResponse({ status: 400, description: 'Bad Request.'})
+@ApiResponse({ status: 401, description: 'Unauthorized.'})
 @Post('')
     login(@Body() user :LogintDto) {
         return this.loginService.login(user);
