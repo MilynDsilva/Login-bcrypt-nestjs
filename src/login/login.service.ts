@@ -1,16 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { LoginRepository } from 'src/repository/login.repository';
-import { LogintDto } from './dto/login-dto';
+import { LoginDto } from './dto/login-dto';
 
 @Injectable()
 export class LoginService {
     constructor(private readonly repository: LoginRepository) {}
 
-    login(user :LogintDto) {
+    login(user :LoginDto) {
         return this.repository.login(user);
     }
 
-    signUp(user :LogintDto) {
+    signUp(user :LoginDto) {
         return this.repository.signUp(user);
+    }
+
+    verify(user: LoginDto , headers) {
+        return this.repository.verify(user,headers);
     }
 }
