@@ -14,7 +14,7 @@ export class LoginService {
         return this.repository.signUp(user);
     }
 
-    verify(user: LoginDto , headers) {
-        return this.repository.verify(user,headers);
+    verify(user: LoginDto) {
+        return this.repository.verify(user);
     }
 }
