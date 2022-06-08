@@ -52,15 +52,5 @@ export class LoginRepository {
 
     async verify(user :LoginDto) {
         return user;
-    //     try {
-    //         const token = headers['authorization'];
-    //         const tokenDecodablePart = token.split('.')[1];
-    //         const decoded = JSON.parse(Buffer.from(tokenDecodablePart, 'base64').toString());
-    //         if(decoded['email'] == user.email)
-    //             return {auth:true , message:"Verfied successfully"};
-    //         return {auth:false , message:"Verfication failed"}
-    //     } catch (error) {
-    //         return error;
-    //     }  
-      }
+    }
 }
