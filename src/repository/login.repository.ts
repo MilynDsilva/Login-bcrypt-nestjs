@@ -43,7 +43,7 @@ export class LoginRepository {
                     return { message: "Invalid Credentials" };
                 }
             } catch(e) {
-                console.log(e)
+                return e;
             }
     } catch(e) {
         return e;
