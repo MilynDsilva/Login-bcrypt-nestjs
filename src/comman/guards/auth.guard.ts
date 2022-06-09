@@ -16,9 +16,7 @@ function validateRequest(request: any) {
     const token = request.headers['authorization'];
     if(token){
         const tokenDecodeable = token.split(' ')[1]
-        const decoded = jwt.verify(tokenDecodeable, process.env.TOKEN_SECRET)
-
-        const result = jwt.verify(tokenDecodeable, process.env.TOKEN_SECRET,function(err, decode) {
+        const result = jwt.verify(tokenDecodeable, process.env.TOKEN_SECRET,function(err, decoded) {
             if(err)
                 return false;
             else {

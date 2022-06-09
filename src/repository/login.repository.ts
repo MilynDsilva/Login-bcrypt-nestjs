@@ -57,7 +57,6 @@ export class LoginRepository {
     async addDescription(user :PropsDto,request) {
         try {
             let resultCount = await this.propsModel.findOne({ 'email':request.email }).count();
-            console.log(resultCount)
             if (resultCount == 0){
                 const newUser = new this.propsModel({
                     email: request.email,
