@@ -33,7 +33,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"some@email.com\",\r\n    \"password\":\"password\"\r\n}",
+					"raw": "{\r\n    \"email\":\"some@email.com\",\r\n    \"password\":\"123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -84,7 +84,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"some@email.com\",\r\n    \"password\":\"password\"\r\n}",
+					"raw": "{\r\n    \"email\":\"some@email.com\",\r\n    \"password\":\"123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -133,7 +133,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"some1@email.com\",\r\n    \"password\":\"password1\"\r\n}",
+					"raw": "{\r\n    \"description\":\"some description\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -141,7 +141,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:4000/api/v1/login/verify",
+					"raw": "localhost:4000/api/v1/login/add-desc",
 					"host": [
 						"localhost"
 					],
@@ -150,7 +150,7 @@
 						"api",
 						"v1",
 						"login",
-						"verify"
+						"add-desc"
 					]
 				}
 			},
