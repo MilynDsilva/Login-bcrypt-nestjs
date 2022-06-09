@@ -12,3 +12,15 @@ export class Login extends Document {
 
 }
 export const LoginSchema = SchemaFactory.createForClass(Login);
+
+@Schema({ versionKey: false })
+export class Props extends Document {
+
+  @Prop({ required: false })
+  email: string;
+
+  @Prop({ required: false })
+  description:string;
+
+}
+export const PropsSchema = SchemaFactory.createForClass(Props);

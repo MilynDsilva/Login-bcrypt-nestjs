@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { LoginRepository } from 'src/repository/login.repository';
 import { LoginDto } from './dto/login-dto';
+import { PropsDto } from './dto/prop-dto';
 
 @Injectable()
 export class LoginService {
@@ -14,7 +15,7 @@ export class LoginService {
         return this.repository.signUp(user);
     }
 
-    verify(user: LoginDto) {
-        return this.repository.verify(user);
+    addDescription(user: PropsDto,request) {
+        return this.repository.addDescription(user,request);
     }
 }

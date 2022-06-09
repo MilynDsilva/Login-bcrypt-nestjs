@@ -1,17 +1,21 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Login } from 'src/database/schema/login.schema';
+import { Login, Props } from 'src/database/schema/login.schema';
 import { LoginDto } from 'src/login/dto/login-dto';
-import { ILogin } from 'src/login/login.interface';
+import { IDesc, ILogin } from 'src/login/login.interface';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
+import { PropsDto } from 'src/login/dto/prop-dto';
 
 @Injectable()
 export class LoginRepository {
   constructor(
     @InjectModel(Login.name)
     private readonly loginModel: Model<ILogin>,
+
+    @InjectModel(Props.name)
+    private readonly propsModel: Model<IDesc>,
     ) {}
   
     async signUp(data: LoginDto) {
@@ -50,7 +54,22 @@ export class LoginRepository {
         }
     }
 
-    async verify(user :LoginDto) {
-        return user;
+    async addDescription(user :PropsDto,request) {
+        try {
+            let resultCount = await this.propsModel.findOne({ 'email':request.email }).count();
+            console.log(resultCount)
+            if (resultCount == 0){
+                const newUser = new this.propsModel({
+                    email: request.email,
+                    description: user.description
+                });
+            return await newUser.save();
+         } 
+        else{
+            return await this.propsModel.findOneAndUpdate({ 'email':request.email },{'description':user.description},{ returnOriginal: false })
+        }
+    } catch(e) {
+        return e;
+    } 
     }
 }

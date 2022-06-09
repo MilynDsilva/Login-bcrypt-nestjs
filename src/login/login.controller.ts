@@ -5,6 +5,7 @@ import { LoginService } from './login.service';
 import { Request } from 'express';
 import { AuthGuard } from 'src/comman/guards/auth.guard';
 import { RequestUser } from 'src/decorator/custom.decorator';
+import { PropsDto } from './dto/prop-dto';
 
 @ApiTags('Login')
 @Controller('login')
@@ -29,9 +30,8 @@ export class LoginController {
 @ApiResponse({ status: 200, description: 'Ok.'})
 @ApiResponse({ status: 400, description: 'Bad Request.'})
 @UseGuards(AuthGuard)
-@Post('/verify')
-    verify(@Body() user :LoginDto ,@RequestUser() request:Request ) {
-        console.log(request)
-        return this.loginService.verify(user);
+@Post('/add-desc')
+    addDescription(@Body() user :PropsDto ,@RequestUser() request:Request ) {
+        return this.loginService.addDescription(user,request);
     }
 }
