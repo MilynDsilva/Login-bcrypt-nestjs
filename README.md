@@ -58,16 +58,16 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## About
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+A Simple Nestjs project which includes hashing of password using bcrypt and verification of jwt token using authguard , and consumption of decoded value from request using custom decorator.
 
-## Stay in touch
+## Sign-up api
+Sign up api takes email and password as input body which produces hashed password using bcrypt and stores in mongodb.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Login api
+Login up api takes email and password as input body which produces access token which can be used in auth guard in case of success scenario
 
-## License
+## Add-desc api
+Add-desc api takes description as input body and email, id from jwt token which validates if user exists or not and stores/updates description field in db.
 
-Nest is [MIT licensed](LICENSE).
