@@ -1,5 +1,6 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
+import { RequestUserDto } from './guard.dto';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -15,11 +16,20 @@ function validateRequest(request: any) {
     const token = request.headers['authorization'];
     if(token){
         const tokenDecodeable = token.split(' ')[1]
+        const decoded = jwt.verify(tokenDecodeable, process.env.TOKEN_SECRET)
+
         const result = jwt.verify(tokenDecodeable, process.env.TOKEN_SECRET,function(err, decode) {
             if(err)
                 return false;
-            else 
-                return true;
+            else {
+              request.user = new RequestUserDto(
+                decoded['id'],
+                decoded['email'],
+                decoded['iat'],
+                decoded['exp'],
+              );
+              return true;
+            }
           });
         return result;
     }

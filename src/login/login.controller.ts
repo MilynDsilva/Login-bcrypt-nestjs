@@ -1,9 +1,10 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { LoginDto } from './dto/login-dto';
 import { LoginService } from './login.service';
-import { Headers } from '@nestjs/common';
+import { Request } from 'express';
 import { AuthGuard } from 'src/comman/guards/auth.guard';
+import { RequestUser } from 'src/decorator/custom.decorator';
 
 @ApiTags('Login')
 @Controller('login')
@@ -29,7 +30,8 @@ export class LoginController {
 @ApiResponse({ status: 400, description: 'Bad Request.'})
 @UseGuards(AuthGuard)
 @Post('/verify')
-    verify(@Body() user :LoginDto) {
+    verify(@Body() user :LoginDto ,@RequestUser() request:Request ) {
+        console.log(request)
         return this.loginService.verify(user);
     }
 }
